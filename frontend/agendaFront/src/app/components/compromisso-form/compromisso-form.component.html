@@ -1,0 +1,28 @@
+<p-toast></p-toast>
+<form [formGroup]="form" (ngSubmit)="salvarCompromisso()">
+  <div class="p-fluid">
+    <div class="p-field">
+      <label for="titulo">Título</label>
+      <input id="titulo" pInputText formControlName="titulo" placeholder="Digite o título do compromisso" />
+    </div>
+    <div class="p-field">
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" pInputTextarea formControlName="descricao" placeholder="Digite a descrição"></textarea>
+    </div>
+    <div class="p-field">
+      <label for="dataHora">Data e Hora</label>
+      <p-calendar id="dataHora" formControlName="dataHora" [showTime]="true" dateFormat="dd/mm/yy"></p-calendar>
+    </div>
+    <div class="p-field">
+      <label for="local">Local</label>
+      <input id="local" pInputText formControlName="local" placeholder="Digite o local" />
+    </div>
+    <div class="p-field">
+      <label for="contatoId">Contato</label>
+      <p-dropdown id="contatoId" formControlName="contatoId" [options]="contatos" placeholder="Selecione um contato"></p-dropdown>
+    </div>
+    <div class="p-field">
+      <button pButton type="submit" label="Salvar" [disabled]="form.invalid"></button>
+    </div>
+  </div>
+</form>
