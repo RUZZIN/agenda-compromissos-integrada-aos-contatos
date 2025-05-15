@@ -1,8 +1,8 @@
-<p>contato-detalhe works!</p>
-<p-timeline [value]="compromissos" align="alternate" class="custom-timeline">
-    <ng-template pTemplate="content" let-compromisso>
-      <p><strong>{{ compromisso.titulo }}</strong></p>
-      <p>{{ compromisso.descricao }}</p>
-      <small>{{ compromisso.dataHora | date: 'short' }}</small>
-    </ng-template>
-  </p-timeline>
+<h3>Compromissos Futuros</h3>
+<ul>
+  <li *ngFor="let compromisso of compromissos">
+    <strong>{{ compromisso.titulo }}</strong> - {{ compromisso.dataHora | date: 'short' }}
+    <p>{{ compromisso.descricao }}</p>
+    <p><strong>Local:</strong> {{ compromisso.local }}</p>
+  </li>
+</ul>

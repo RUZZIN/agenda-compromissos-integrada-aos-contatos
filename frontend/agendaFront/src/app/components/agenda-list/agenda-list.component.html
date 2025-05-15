@@ -1,30 +1,10 @@
-<div class="acordao-container">
-  <!-- Mostra mensagem quando não há compromissos -->
-  <div *ngIf="datas.length === 0" class="sem-compromissos">
-    Nenhum compromisso cadastrado.
-  </div>
-
-  <!-- Lista de compromissos por data -->
-  <div *ngFor="let data of datas" class="acordao-item">
-    <div class="acordao-cabecalho" (click)="toggleAcordao(data)">
-      <div class="cabecalho-texto">{{ data }}</div>
-      <div class="cabecalho-icone">
-        {{ estaAberto(data) ? '▼' : '►' }}
-      </div>
-    </div>
-    
-    <div class="acordao-conteudo" [class.acordao-aberto]="estaAberto(data)">
-      <div *ngIf="compromissosPorData[data]?.length">
-        <div *ngFor="let compromisso of compromissosPorData[data]" class="card-compromisso">
-          <h3>{{ compromisso.titulo }}</h3>
-          <p>{{ compromisso.descricao }}</p>
-          <p><strong>Local:</strong> {{ compromisso.local }}</p>
-          <p><strong>Horário:</strong> {{ compromisso.dataHora | date: 'short' }}</p>
-        </div>
-      </div>
-      <div *ngIf="!compromissosPorData[data]?.length">
-        <p>Nenhum compromisso para esta data.</p>
-      </div>
-    </div>
-  </div>
-</div>
+<div *ngFor="let data of getChaves()">
+    <h3>{{ data }}</h3>
+    <ul>
+      <li *ngFor="let compromisso of compromissosPorData[data]">
+        <strong>{{ compromisso.titulo }}</strong> - {{ compromisso.dataHora | date: 'short' }}
+        <p>{{ compromisso.descricao }}</p>
+        <p><strong>Local:</strong> {{ compromisso.local }}</p>
+      </li>
+    </ul>
+  </div>    

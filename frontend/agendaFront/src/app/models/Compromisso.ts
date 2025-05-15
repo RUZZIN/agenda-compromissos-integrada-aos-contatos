@@ -1,4 +1,4 @@
-import { Contato } from './contato';
+import { Contato } from './Contato';
 
 export interface Compromisso {
   id: number;
